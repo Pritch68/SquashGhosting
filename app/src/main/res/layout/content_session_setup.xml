@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:id="@+id/scrollView"
+    android:layout_above="@+id/lblRallies"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentStart="true"
+    android:fillViewport="false">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:context="com.terrypritchard.myfirstapp.MyActivity"
+        tools:showIn="@layout/activity_my">
+
+        <!-- <include layout="@layout/activity_my" /> -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Number of Rallies:"
+            android:id="@+id/lblRallies"
+            android:paddingTop="50dp" />
+
+        <SeekBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/seekBarRallies"
+            android:max="27"
+            android:indeterminate="false"
+            android:progress="5"
+            android:layout_below="@+id/lblRallies"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="8"
+            android:id="@+id/textViewRallies"
+            android:layout_below="@+id/seekBarRallies"
+            android:layout_alignLeft="@+id/seekBarRallies"
+            android:layout_alignStart="@+id/seekBarRallies"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:textAlignment="center" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Shots Per Rally:"
+            android:id="@+id/lblShotsPerRally"
+            android:layout_below="@+id/textViewRallies"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:paddingTop="20dp" />
+
+        <SeekBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/seekBarShotsPerRally"
+            android:max="25"
+            android:progress="10"
+            android:indeterminate="false"
+            android:layout_below="@+id/lblShotsPerRally"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="15"
+            android:id="@+id/textViewShotsPerRally"
+            android:textAlignment="center"
+            android:layout_below="@+id/seekBarShotsPerRally"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Shot Interval (s):"
+            android:id="@+id/lblShotInterval"
+            android:layout_below="@+id/textViewShotsPerRally"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:paddingTop="20dp" />
+
+        <SeekBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/seekBarShotInterval"
+            android:max="40"
+            android:indeterminate="false"
+            android:progress="20"
+            android:layout_below="@+id/lblShotInterval"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="4.5"
+            android:id="@+id/textViewShotInterval"
+            android:layout_below="@+id/seekBarShotInterval"
+            android:layout_alignRight="@+id/seekBarShotInterval"
+            android:layout_alignEnd="@+id/seekBarShotInterval"
+            android:layout_alignLeft="@+id/seekBarShotInterval"
+            android:layout_alignStart="@+id/seekBarShotInterval"
+            android:textAlignment="center" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Break Between Rallies (s):"
+            android:id="@+id/lblBreak"
+            android:layout_below="@+id/textViewShotInterval"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:paddingTop="20dp" />
+
+        <SeekBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/seekBarBreak"
+            android:max="20"
+            android:indeterminate="false"
+            android:progress="10"
+            android:layout_below="@+id/lblBreak"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="15"
+            android:id="@+id/textViewBreak"
+            android:layout_below="@+id/seekBarBreak"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignLeft="@+id/seekBarBreak"
+            android:layout_alignStart="@+id/seekBarBreak"
+            android:textAlignment="center" />
+
+    </RelativeLayout>
+</ScrollView>
