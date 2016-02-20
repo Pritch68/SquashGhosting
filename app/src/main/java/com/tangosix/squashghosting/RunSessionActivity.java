@@ -25,7 +25,7 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import java.util.Random;
 
 /**
- * An example full-screen activity that shows and hides the system UI (i.e.
+ * A full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
  */
 public class RunSessionActivity extends AppCompatActivity {
@@ -99,6 +99,7 @@ public class RunSessionActivity extends AppCompatActivity {
         }
     };
 
+    private Thread sessionThread;
     private int Rallies = 8;
     private int ShotsPerRally = 15;
     private int ShotInterval = 6;
@@ -234,6 +235,7 @@ public class RunSessionActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         shotHandler.removeCallbacks(runSession);
+        sessionThread.interrupt();
         super.onPause();
     }
 
@@ -302,11 +304,15 @@ public class RunSessionActivity extends AppCompatActivity {
                 sequenceSession();
             }
         };
-        new Thread(runSession).start();
+        sessionThread = new Thread(runSession);
+        sessionThread.start();
     }
 
     private void sequenceSession() {
+        Boolean mInterrupted = false;
+
         // Countdown to Start
+        countdownloop:
         for (int j = 10; j>0; j--){
             currentShot = j;
             if (j<=3) {
@@ -331,7 +337,7 @@ public class RunSessionActivity extends AppCompatActivity {
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                return;
             }
         }
         shotHandler.post(new Runnable() {
@@ -343,8 +349,10 @@ public class RunSessionActivity extends AppCompatActivity {
         });
 
         // For each Rally
+        rallyloop:
         for (int Rally = 1; Rally <= Rallies; Rally++){
             // For each Shot
+            shotloop:
             for (int Shot=1; Shot <= ShotsPerRally; Shot++){
                 // Generate Shot
                 currentShot = shotRand.nextInt(6)+1;
@@ -359,7 +367,7 @@ public class RunSessionActivity extends AppCompatActivity {
                 try {
                     Thread.sleep(ShotInterval-800);
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    return;
                 }
                 //Clear shot display
                 shotHandler.post(new Runnable() {
@@ -371,13 +379,14 @@ public class RunSessionActivity extends AppCompatActivity {
                 try {
                     Thread.sleep(800);
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    return;
                 }
 
             }
 
             if (Rally < Rallies) {
                 //Pause for break
+                breakloop:
                 for (int j = Break; j > 0; j--) {
                     currentShot = j;
                     if (j <= 3) {
@@ -402,7 +411,7 @@ public class RunSessionActivity extends AppCompatActivity {
                     try {
                         Thread.sleep(1000);
                     } catch (InterruptedException e) {
-                        e.printStackTrace();
+                        return;
                     }
                     shotHandler.post(new Runnable() {
                         @Override
@@ -451,6 +460,7 @@ public class RunSessionActivity extends AppCompatActivity {
 
     @Override
     public void onStop() {
+        sessionThread.interrupt();
         super.onStop();
 
         // ATTENTION: This was auto-generated to implement the App Indexing API.
