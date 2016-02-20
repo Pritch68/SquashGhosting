@@ -230,13 +230,14 @@ public class RunSessionActivity extends AppCompatActivity {
         mHideHandler.postDelayed(mHideRunnable, delayMillis);
     }
 
-    /**
+
     @Override
     protected void onPause() {
         shotHandler.removeCallbacks(runSession);
         super.onPause();
     }
 
+    /**
     @Override
     protected void onResume() {
         shotHandler.postDelayed(runSession,5000);
