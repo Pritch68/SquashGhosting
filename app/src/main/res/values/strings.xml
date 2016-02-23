@@ -8,4 +8,10 @@
     <string name="saved_ShotsPerRally">ShotsPerRally</string>
     <string name="saved_ShotInterval">ShotInterval</string>
     <string name="saved_Break">Break</string>
+
+    <!-- Strings related to Settings -->
+    <string name="sound_Preference">Sound</string>
+    <string name="sound_Preference_Summary">Play sounds during session.</string>
+    <string name="title_activity_settings">Settings</string>
+    <string name="pref_header_general">General</string>
 </resources>
