@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -20,11 +21,15 @@ import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
 
+import java.util.Map;
+import java.util.Set;
+
 public class SessionSetupActivity extends AppCompatActivity {
     public final static String RALLIES_MESSAGE = "com.tangosix.squashghosting.RALLIES_MESSAGE";
     public final static String SHOTSPERRALLY_MESSAGE = "com.tangosix.squashghosting.SHOTSPERRALLY_MESSAGE";
     public final static String SHOTINTERVAL_MESSAGE = "com.tangosix.squashghosting.SHOTINTERVAL_MESSAGE";
     public final static String BREAK_MESSAGE = "com.tangosix.squashghosting.BREAK_MESSAGE";
+    public final static String SOUND_ENABLED_MESSAGE = "com.tangosix.squashghosting.SOUND_ENABLED_MESSAGE";
 
     private int Rallies = 8;
     private int ShotsPerRally = 15;
@@ -185,7 +190,12 @@ public class SessionSetupActivity extends AppCompatActivity {
     }
 
     public void sendMessage() {
-        // Save settings
+
+        // Retrieve App Settings
+        SharedPreferences otherPref = PreferenceManager.getDefaultSharedPreferences(this);
+        boolean mSoundEnabled = otherPref.getBoolean("pref_sound",true);
+
+        // Save session values
         SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putInt(getString(R.string.saved_Rallies), Rallies);
@@ -200,6 +210,8 @@ public class SessionSetupActivity extends AppCompatActivity {
         intent.putExtra(SHOTSPERRALLY_MESSAGE, ShotsPerRally);
         intent.putExtra(SHOTINTERVAL_MESSAGE, ShotInterval);
         intent.putExtra(BREAK_MESSAGE, Break);
+        intent.putExtra(SOUND_ENABLED_MESSAGE, mSoundEnabled);
+
         startActivity(intent);
     }
 

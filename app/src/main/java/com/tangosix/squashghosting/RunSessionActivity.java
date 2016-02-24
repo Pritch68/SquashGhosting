@@ -9,6 +9,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
@@ -104,6 +105,8 @@ public class RunSessionActivity extends AppCompatActivity {
     private int ShotsPerRally = 15;
     private int ShotInterval = 6;
     private int Break = 15;
+    private boolean mSoundEnabled = true;
+
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -159,6 +162,8 @@ public class RunSessionActivity extends AppCompatActivity {
         ShotsPerRally = intent.getIntExtra(SessionSetupActivity.SHOTSPERRALLY_MESSAGE, 15);
         ShotInterval = intent.getIntExtra(SessionSetupActivity.SHOTINTERVAL_MESSAGE, 4500);
         Break = intent.getIntExtra(SessionSetupActivity.BREAK_MESSAGE, 15);
+        mSoundEnabled = intent.getBooleanExtra(SessionSetupActivity.SOUND_ENABLED_MESSAGE, true);
+        Log.d("mSound in RunSession", (String.valueOf(mSoundEnabled)));
 
 
         // ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -267,32 +272,32 @@ public class RunSessionActivity extends AppCompatActivity {
             case 1:
                 imgView = (ImageView) findViewById(R.id.shotOne);
                 imgView.setVisibility(View.VISIBLE);
-                mySound.play(shotSoundId,1.0f,1.0f,1,0,1.0f);
+                if (mSoundEnabled) mySound.play(shotSoundId,1.0f,1.0f,1,0,1.0f);
                 break;
             case 2:
                 imgView = (ImageView) findViewById(R.id.shotTwo);
                 imgView.setVisibility(View.VISIBLE);
-                mySound.play(shotSoundId,1.0f,1.0f,1,0,1.0f);
+                if (mSoundEnabled) mySound.play(shotSoundId,1.0f,1.0f,1,0,1.0f);
                 break;
             case 3:
                 imgView = (ImageView) findViewById(R.id.shotThree);
                 imgView.setVisibility(View.VISIBLE);
-                mySound.play(shotSoundId,1.0f,1.0f,1,0,1.0f);
+                if (mSoundEnabled) mySound.play(shotSoundId,1.0f,1.0f,1,0,1.0f);
                 break;
             case 4:
                 imgView = (ImageView) findViewById(R.id.shotFour);
                 imgView.setVisibility(View.VISIBLE);
-                mySound.play(shotSoundId,1.0f,1.0f,1,0,1.0f);
+                if (mSoundEnabled) mySound.play(shotSoundId,1.0f,1.0f,1,0,1.0f);
                 break;
             case 5:
                 imgView = (ImageView) findViewById(R.id.shotFive);
                 imgView.setVisibility(View.VISIBLE);
-                mySound.play(shotSoundId,1.0f,1.0f,1,0,1.0f);
+                if (mSoundEnabled) mySound.play(shotSoundId,1.0f,1.0f,1,0,1.0f);
                 break;
             case 6:
                 imgView = (ImageView) findViewById(R.id.shotSix);
                 imgView.setVisibility(View.VISIBLE);
-                mySound.play(shotSoundId,1.0f,1.0f,1,0,1.0f);
+                if (mSoundEnabled) mySound.play(shotSoundId,1.0f,1.0f,1,0,1.0f);
                 break;
         }
     }
@@ -321,7 +326,7 @@ public class RunSessionActivity extends AppCompatActivity {
                     public void run() {
                         tempView = (TextView) findViewById(R.id.fullscreen_content);
                         tempView.setText(String.valueOf(String.valueOf(currentShot)));
-                        mySound.play(beepSoundId, 1.0f, 1.0f, 1, 0, 1.0f);
+                        if (mSoundEnabled) mySound.play(beepSoundId, 1.0f, 1.0f, 1, 0, 1.0f);
                     }
                 });
             }
