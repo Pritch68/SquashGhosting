@@ -163,8 +163,6 @@ public class RunSessionActivity extends AppCompatActivity {
         ShotInterval = intent.getIntExtra(SessionSetupActivity.SHOTINTERVAL_MESSAGE, 4500);
         Break = intent.getIntExtra(SessionSetupActivity.BREAK_MESSAGE, 15);
         mSoundEnabled = intent.getBooleanExtra(SessionSetupActivity.SOUND_ENABLED_MESSAGE, true);
-        Log.d("mSound in RunSession", (String.valueOf(mSoundEnabled)));
-
 
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
