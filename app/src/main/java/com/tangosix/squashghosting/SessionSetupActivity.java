@@ -30,6 +30,7 @@ public class SessionSetupActivity extends AppCompatActivity {
     public final static String SHOTINTERVAL_MESSAGE = "com.tangosix.squashghosting.SHOTINTERVAL_MESSAGE";
     public final static String BREAK_MESSAGE = "com.tangosix.squashghosting.BREAK_MESSAGE";
     public final static String SOUND_ENABLED_MESSAGE = "com.tangosix.squashghosting.SOUND_ENABLED_MESSAGE";
+    public final static String RALLY_COUNTER_ENABLED_MESSAGE = "com.tangosix.squashghosting.RALLY_COUNTER_ENABLED_MESSAGE";
 
     private int Rallies = 8;
     private int ShotsPerRally = 15;
@@ -194,6 +195,7 @@ public class SessionSetupActivity extends AppCompatActivity {
         // Retrieve App Settings
         SharedPreferences otherPref = PreferenceManager.getDefaultSharedPreferences(this);
         boolean mSoundEnabled = otherPref.getBoolean("pref_sound",true);
+        boolean mRallyCounterEnabled = otherPref.getBoolean("pref_rally_counter",false);
 
         // Save session values
         SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
@@ -211,6 +213,7 @@ public class SessionSetupActivity extends AppCompatActivity {
         intent.putExtra(SHOTINTERVAL_MESSAGE, ShotInterval);
         intent.putExtra(BREAK_MESSAGE, Break);
         intent.putExtra(SOUND_ENABLED_MESSAGE, mSoundEnabled);
+        intent.putExtra(RALLY_COUNTER_ENABLED_MESSAGE, mRallyCounterEnabled);
 
         startActivity(intent);
     }

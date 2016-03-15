@@ -107,6 +107,7 @@ public class RunSessionActivity extends AppCompatActivity {
     private int ShotInterval = 6;
     private int Break = 15;
     private boolean mSoundEnabled = true;
+    private boolean mRallyCounterEnabled = false;
 
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -120,6 +121,7 @@ public class RunSessionActivity extends AppCompatActivity {
     Random shotRand = new Random();
     String number;
     int currentShot;
+    int currentCounter;
     Handler shotHandler = new Handler();
     Runnable runSession;
     SoundPool mySound;
@@ -168,6 +170,7 @@ public class RunSessionActivity extends AppCompatActivity {
         ShotInterval = intent.getIntExtra(SessionSetupActivity.SHOTINTERVAL_MESSAGE, 4500);
         Break = intent.getIntExtra(SessionSetupActivity.BREAK_MESSAGE, 15);
         mSoundEnabled = intent.getBooleanExtra(SessionSetupActivity.SOUND_ENABLED_MESSAGE, true);
+        mRallyCounterEnabled = intent.getBooleanExtra(SessionSetupActivity.RALLY_COUNTER_ENABLED_MESSAGE, false);
 
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -256,7 +259,7 @@ public class RunSessionActivity extends AppCompatActivity {
     **/
 
     // show the shot
-    public void display_shot(int shot) {
+    public void display_shot(int shot, int counter) {
         switch ( shot ) {
             case 0:
                 imgView = (ImageView) findViewById(R.id.shotOne);
@@ -271,35 +274,63 @@ public class RunSessionActivity extends AppCompatActivity {
                 imgView.setVisibility(View.INVISIBLE);
                 imgView = (ImageView) findViewById(R.id.shotSix);
                 imgView.setVisibility(View.INVISIBLE);
+                if (counter == 0) {
+                    tempView = (TextView) findViewById(R.id.textview_rally_counter);
+                    tempView.setText("");
+                }
                 break;
             case 1:
                 imgView = (ImageView) findViewById(R.id.shotOne);
                 imgView.setVisibility(View.VISIBLE);
+                if (mRallyCounterEnabled) {
+                    tempView = (TextView) findViewById(R.id.textview_rally_counter);
+                    tempView.setText(String.valueOf(counter));
+                }
                 if (mSoundEnabled) mySound.play(shotSoundId,1.0f,1.0f,1,0,1.0f);
                 break;
             case 2:
                 imgView = (ImageView) findViewById(R.id.shotTwo);
                 imgView.setVisibility(View.VISIBLE);
+                if (mRallyCounterEnabled) {
+                    tempView = (TextView) findViewById(R.id.textview_rally_counter);
+                    tempView.setText(String.valueOf(counter));
+                }
                 if (mSoundEnabled) mySound.play(shotSoundId,1.0f,1.0f,1,0,1.0f);
                 break;
             case 3:
                 imgView = (ImageView) findViewById(R.id.shotThree);
                 imgView.setVisibility(View.VISIBLE);
+                if (mRallyCounterEnabled) {
+                    tempView = (TextView) findViewById(R.id.textview_rally_counter);
+                    tempView.setText(String.valueOf(counter));
+                }
                 if (mSoundEnabled) mySound.play(shotSoundId,1.0f,1.0f,1,0,1.0f);
                 break;
             case 4:
                 imgView = (ImageView) findViewById(R.id.shotFour);
                 imgView.setVisibility(View.VISIBLE);
+                if (mRallyCounterEnabled) {
+                    tempView = (TextView) findViewById(R.id.textview_rally_counter);
+                    tempView.setText(String.valueOf(counter));
+                }
                 if (mSoundEnabled) mySound.play(shotSoundId,1.0f,1.0f,1,0,1.0f);
                 break;
             case 5:
                 imgView = (ImageView) findViewById(R.id.shotFive);
                 imgView.setVisibility(View.VISIBLE);
+                if (mRallyCounterEnabled) {
+                    tempView = (TextView) findViewById(R.id.textview_rally_counter);
+                    tempView.setText(String.valueOf(counter));
+                }
                 if (mSoundEnabled) mySound.play(shotSoundId,1.0f,1.0f,1,0,1.0f);
                 break;
             case 6:
                 imgView = (ImageView) findViewById(R.id.shotSix);
                 imgView.setVisibility(View.VISIBLE);
+                if (mRallyCounterEnabled) {
+                    tempView = (TextView) findViewById(R.id.textview_rally_counter);
+                    tempView.setText(String.valueOf(counter));
+                }
                 if (mSoundEnabled) mySound.play(shotSoundId,1.0f,1.0f,1,0,1.0f);
                 break;
         }
@@ -364,11 +395,13 @@ public class RunSessionActivity extends AppCompatActivity {
             for (int Shot=1; Shot <= ShotsPerRally; Shot++){
                 // Generate Shot
                 currentShot = shotRand.nextInt(6)+1;
+                // Calculate Shots Remaining in Rally
+                currentCounter = ShotsPerRally-Shot+1;
                 // Display Shot
                 shotHandler.post(new Runnable() {
                     @Override
                     public void run() {
-                        display_shot(currentShot);
+                        display_shot(currentShot,currentCounter);
                     }
                 });
                 // Pause for ShotInterval
@@ -380,7 +413,7 @@ public class RunSessionActivity extends AppCompatActivity {
                 //Clear shot display
                 shotHandler.post(new Runnable() {
                     @Override
-                    public void run() { display_shot(0); }
+                    public void run() { display_shot(0,1); }
                 });
 
                 //Pause for 200ms with no shot displayed
@@ -391,6 +424,12 @@ public class RunSessionActivity extends AppCompatActivity {
                 }
 
             }
+
+            //Clear shot display
+            shotHandler.post(new Runnable() {
+                @Override
+                public void run() { display_shot(0,0); }
+            });
 
             if (Rally < Rallies) {
                 //Pause for break

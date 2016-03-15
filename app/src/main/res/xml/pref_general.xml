@@ -4,4 +4,9 @@
         android:title="@string/sound_Preference"
         android:summary="@string/sound_Preference_Summary"
         android:defaultValue="true" />
+    <CheckBoxPreference
+        android:key="pref_rally_counter"
+        android:title="@string/rally_counter_Preference"
+        android:summary="@string/rally_counter_Preference_Summary"
+        android:defaultValue="false" />
 </PreferenceScreen>

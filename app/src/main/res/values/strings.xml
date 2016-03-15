@@ -12,6 +12,8 @@
     <!-- Strings related to Settings -->
     <string name="sound_Preference">Sound</string>
     <string name="sound_Preference_Summary">Play sounds during session.</string>
+    <string name="rally_counter_Preference">Display Shots Remaining in Rally</string>
+    <string name="rally_counter_Preference_Summary">Show number of shots remaining in current rally.</string>
     <string name="title_activity_settings">Settings</string>
     <string name="pref_header_general">General</string>
 </resources>
