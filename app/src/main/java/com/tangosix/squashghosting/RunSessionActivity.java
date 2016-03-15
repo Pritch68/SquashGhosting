@@ -256,16 +256,18 @@ public class RunSessionActivity extends AppCompatActivity {
     protected void onPause() {
         shotHandler.removeCallbacks(runSession);
         sessionThread.interrupt();
+        tempView = (TextView) findViewById(R.id.fullscreen_content);
+        tempView.setTextSize(40.0f);
+        tempView.setText("Session Interrupted");
         super.onPause();
     }
 
-    /**
+
     @Override
     protected void onResume() {
-        shotHandler.postDelayed(runSession,5000);
         super.onResume();
     }
-    **/
+
 
     // show the shot
     public void display_shot(int shot, int counter) {

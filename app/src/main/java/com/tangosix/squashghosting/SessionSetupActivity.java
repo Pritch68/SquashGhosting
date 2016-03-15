@@ -195,9 +195,9 @@ public class SessionSetupActivity extends AppCompatActivity {
 
         // Retrieve App Settings
         SharedPreferences otherPref = PreferenceManager.getDefaultSharedPreferences(this);
-        boolean mSoundEnabled = otherPref.getBoolean("pref_sound",true);
-        boolean mRallyCounterEnabled = otherPref.getBoolean("pref_rally_counter",false);
-        int mSoundType = Integer.valueOf(otherPref.getString("pref_sound_type","1"));
+        boolean mSoundEnabled = otherPref.getBoolean("pref_sound", true);
+        boolean mRallyCounterEnabled = otherPref.getBoolean("pref_rally_counter", false);
+        int mSoundType = Integer.valueOf(otherPref.getString("pref_sound_type", "1"));
 
         // Save session values
         SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
@@ -235,6 +235,11 @@ public class SessionSetupActivity extends AppCompatActivity {
             return true;
         }
 
+        if (id == R.id.action_help) {
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.simplesquashtools.com/squash-ghosting-help"));
+            startActivity(browserIntent);
+            return true;
+        }
         return super.onOptionsItemSelected(item);
     }
 
