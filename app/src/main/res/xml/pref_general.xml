@@ -1,10 +1,17 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <CheckBoxPreference
+    <SwitchPreference
         android:key="pref_sound"
         android:title="@string/sound_Preference"
         android:summary="@string/sound_Preference_Summary"
         android:defaultValue="true" />
-    <CheckBoxPreference
+    <ListPreference
+        android:key="pref_sound_type"
+        android:dependency="pref_sound"
+        android:title="Sound Effect"
+        android:summary="Type of sound effect to be played for each shot."
+        android:entries="@array/soundType"
+        android:entryValues="@array/soundTypeValues" />
+    <SwitchPreference
         android:key="pref_rally_counter"
         android:title="@string/rally_counter_Preference"
         android:summary="@string/rally_counter_Preference_Summary"

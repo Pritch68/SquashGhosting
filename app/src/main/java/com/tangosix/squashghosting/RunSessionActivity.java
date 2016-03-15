@@ -107,6 +107,7 @@ public class RunSessionActivity extends AppCompatActivity {
     private int ShotInterval = 6;
     private int Break = 15;
     private boolean mSoundEnabled = true;
+    private int mSoundType = 1;
     private boolean mRallyCounterEnabled = false;
 
     /**
@@ -127,6 +128,7 @@ public class RunSessionActivity extends AppCompatActivity {
     SoundPool mySound;
     int shotSoundId;
     int beepSoundId;
+    int announceOneId, announceTwoId, announceThreeId, announceFourId, announceFiveId, announceSixId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -164,12 +166,19 @@ public class RunSessionActivity extends AppCompatActivity {
         mySound = new SoundPool(1,AudioManager.STREAM_NOTIFICATION,0);
         shotSoundId = mySound.load(this, R.raw.shot, 1);
         beepSoundId = mySound.load(this, R.raw.beeplow, 1);
+        announceOneId = mySound.load(this, R.raw.announce_one, 1);
+        announceTwoId = mySound.load(this, R.raw.announce_two, 1);
+        announceThreeId = mySound.load(this, R.raw.announce_three, 1);
+        announceFourId = mySound.load(this, R.raw.announce_four, 1);
+        announceFiveId = mySound.load(this, R.raw.announce_five, 1);
+        announceSixId = mySound.load(this, R.raw.announce_six, 1);
 
         Rallies = intent.getIntExtra(SessionSetupActivity.RALLIES_MESSAGE, 8);
         ShotsPerRally = intent.getIntExtra(SessionSetupActivity.SHOTSPERRALLY_MESSAGE, 15);
         ShotInterval = intent.getIntExtra(SessionSetupActivity.SHOTINTERVAL_MESSAGE, 4500);
         Break = intent.getIntExtra(SessionSetupActivity.BREAK_MESSAGE, 15);
         mSoundEnabled = intent.getBooleanExtra(SessionSetupActivity.SOUND_ENABLED_MESSAGE, true);
+        mSoundType = intent.getIntExtra(SessionSetupActivity.SOUND_TYPE_MESSAGE, 1);
         mRallyCounterEnabled = intent.getBooleanExtra(SessionSetupActivity.RALLY_COUNTER_ENABLED_MESSAGE, false);
 
         // ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -286,7 +295,17 @@ public class RunSessionActivity extends AppCompatActivity {
                     tempView = (TextView) findViewById(R.id.textview_rally_counter);
                     tempView.setText(String.valueOf(counter));
                 }
-                if (mSoundEnabled) mySound.play(shotSoundId,1.0f,1.0f,1,0,1.0f);
+                if (mSoundEnabled)
+                    switch (mSoundType) {
+                        case 1:
+                            mySound.play(shotSoundId, 1.0f,1.0f,1,0,1.0f);
+                            break;
+                        case 2:
+                            mySound.play(beepSoundId, 1.0f,1.0f,1,0,1.0f);
+                            break;
+                        case 3:
+                            mySound.play(announceOneId, 1.0f,1.0f,1,0,1.0f);
+                    }
                 break;
             case 2:
                 imgView = (ImageView) findViewById(R.id.shotTwo);
@@ -295,7 +314,17 @@ public class RunSessionActivity extends AppCompatActivity {
                     tempView = (TextView) findViewById(R.id.textview_rally_counter);
                     tempView.setText(String.valueOf(counter));
                 }
-                if (mSoundEnabled) mySound.play(shotSoundId,1.0f,1.0f,1,0,1.0f);
+                if (mSoundEnabled)
+                    switch (mSoundType) {
+                        case 1:
+                            mySound.play(shotSoundId, 1.0f,1.0f,1,0,1.0f);
+                            break;
+                        case 2:
+                            mySound.play(beepSoundId, 1.0f,1.0f,1,0,1.0f);
+                            break;
+                        case 3:
+                            mySound.play(announceTwoId, 1.0f,1.0f,1,0,1.0f);
+                    }
                 break;
             case 3:
                 imgView = (ImageView) findViewById(R.id.shotThree);
@@ -304,7 +333,17 @@ public class RunSessionActivity extends AppCompatActivity {
                     tempView = (TextView) findViewById(R.id.textview_rally_counter);
                     tempView.setText(String.valueOf(counter));
                 }
-                if (mSoundEnabled) mySound.play(shotSoundId,1.0f,1.0f,1,0,1.0f);
+                if (mSoundEnabled)
+                    switch (mSoundType) {
+                        case 1:
+                            mySound.play(shotSoundId, 1.0f,1.0f,1,0,1.0f);
+                            break;
+                        case 2:
+                            mySound.play(beepSoundId, 1.0f,1.0f,1,0,1.0f);
+                            break;
+                        case 3:
+                            mySound.play(announceThreeId, 1.0f,1.0f,1,0,1.0f);
+                    }
                 break;
             case 4:
                 imgView = (ImageView) findViewById(R.id.shotFour);
@@ -313,7 +352,17 @@ public class RunSessionActivity extends AppCompatActivity {
                     tempView = (TextView) findViewById(R.id.textview_rally_counter);
                     tempView.setText(String.valueOf(counter));
                 }
-                if (mSoundEnabled) mySound.play(shotSoundId,1.0f,1.0f,1,0,1.0f);
+                if (mSoundEnabled)
+                    switch (mSoundType) {
+                        case 1:
+                            mySound.play(shotSoundId, 1.0f,1.0f,1,0,1.0f);
+                            break;
+                        case 2:
+                            mySound.play(beepSoundId, 1.0f,1.0f,1,0,1.0f);
+                            break;
+                        case 3:
+                            mySound.play(announceFourId, 1.0f,1.0f,1,0,1.0f);
+                    }
                 break;
             case 5:
                 imgView = (ImageView) findViewById(R.id.shotFive);
@@ -322,7 +371,17 @@ public class RunSessionActivity extends AppCompatActivity {
                     tempView = (TextView) findViewById(R.id.textview_rally_counter);
                     tempView.setText(String.valueOf(counter));
                 }
-                if (mSoundEnabled) mySound.play(shotSoundId,1.0f,1.0f,1,0,1.0f);
+                if (mSoundEnabled)
+                    switch (mSoundType) {
+                        case 1:
+                            mySound.play(shotSoundId, 1.0f,1.0f,1,0,1.0f);
+                            break;
+                        case 2:
+                            mySound.play(beepSoundId, 1.0f,1.0f,1,0,1.0f);
+                            break;
+                        case 3:
+                            mySound.play(announceFiveId, 1.0f,1.0f,1,0,1.0f);
+                    }
                 break;
             case 6:
                 imgView = (ImageView) findViewById(R.id.shotSix);
@@ -331,7 +390,17 @@ public class RunSessionActivity extends AppCompatActivity {
                     tempView = (TextView) findViewById(R.id.textview_rally_counter);
                     tempView.setText(String.valueOf(counter));
                 }
-                if (mSoundEnabled) mySound.play(shotSoundId,1.0f,1.0f,1,0,1.0f);
+                if (mSoundEnabled)
+                    switch (mSoundType) {
+                        case 1:
+                            mySound.play(shotSoundId, 1.0f,1.0f,1,0,1.0f);
+                            break;
+                        case 2:
+                            mySound.play(beepSoundId, 1.0f,1.0f,1,0,1.0f);
+                            break;
+                        case 3:
+                            mySound.play(announceSixId, 1.0f,1.0f,1,0,1.0f);
+                    }
                 break;
         }
     }
