@@ -109,6 +109,8 @@ public class RunSessionActivity extends AppCompatActivity {
     private boolean mSoundEnabled = true;
     private int mSoundType = 1;
     private boolean mRallyCounterEnabled = false;
+    private boolean mShowCourt = true;
+    private boolean mShowMarkers = false;
 
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -180,6 +182,8 @@ public class RunSessionActivity extends AppCompatActivity {
         mSoundEnabled = intent.getBooleanExtra(SessionSetupActivity.SOUND_ENABLED_MESSAGE, true);
         mSoundType = intent.getIntExtra(SessionSetupActivity.SOUND_TYPE_MESSAGE, 1);
         mRallyCounterEnabled = intent.getBooleanExtra(SessionSetupActivity.RALLY_COUNTER_ENABLED_MESSAGE, false);
+        mShowCourt = intent.getBooleanExtra(SessionSetupActivity.SHOW_COURT_MESSAGE, true);
+        mShowMarkers = intent.getBooleanExtra(SessionSetupActivity.SHOW_MARKERS_MESSAGE, false);
 
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -408,6 +412,26 @@ public class RunSessionActivity extends AppCompatActivity {
     }
 
     public void start_session() {
+        if (!mShowCourt) {
+            imgView = (ImageView) findViewById(R.id.court);
+            imgView.setVisibility(View.INVISIBLE);
+        }
+
+        if (mShowMarkers) {
+            imgView = (ImageView) findViewById(R.id.markerOne);
+            imgView.setVisibility(View.VISIBLE);
+            imgView = (ImageView) findViewById(R.id.markerTwo);
+            imgView.setVisibility(View.VISIBLE);
+            imgView = (ImageView) findViewById(R.id.markerThree);
+            imgView.setVisibility(View.VISIBLE);
+            imgView = (ImageView) findViewById(R.id.markerFour);
+            imgView.setVisibility(View.VISIBLE);
+            imgView = (ImageView) findViewById(R.id.markerFive);
+            imgView.setVisibility(View.VISIBLE);
+            imgView = (ImageView) findViewById(R.id.markerSix);
+            imgView.setVisibility(View.VISIBLE);
+        }
+
         runSession = new Runnable() {
             @Override
             public void run() {

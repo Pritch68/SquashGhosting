@@ -11,7 +11,7 @@
     <ImageView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:id="@+id/imageView"
+        android:id="@+id/court"
         android:background="@drawable/squash_court_sm" />
 
     <TextView
@@ -41,9 +41,29 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/markerOne"
+        android:layout_gravity="left|top"
+        android:src="@drawable/marker_large"
+        android:paddingLeft="20dp"
+        android:paddingTop="20dp"
+        android:visibility="invisible" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:id="@+id/shotOne"
         android:layout_gravity="left|top"
         android:src="@drawable/squashball_large"
+        android:paddingLeft="20dp"
+        android:paddingTop="20dp"
+        android:visibility="invisible" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/markerTwo"
+        android:layout_gravity="left|center_vertical"
+        android:src="@drawable/marker_large"
         android:paddingLeft="20dp"
         android:paddingTop="20dp"
         android:visibility="invisible" />
@@ -60,11 +80,31 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/markerThree"
+        android:layout_gravity="left|bottom"
+        android:src="@drawable/marker_large"
+        android:paddingLeft="20dp"
+        android:paddingTop="20dp"
+        android:visibility="invisible" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:id="@+id/shotThree"
         android:layout_gravity="left|bottom"
         android:src="@drawable/squashball_large"
         android:paddingLeft="20dp"
         android:paddingBottom="20dp"
+        android:visibility="invisible" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/markerFour"
+        android:layout_gravity="right|top"
+        android:src="@drawable/marker_large"
+        android:paddingLeft="20dp"
+        android:paddingTop="20dp"
         android:visibility="invisible" />
 
     <ImageView
@@ -80,10 +120,30 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/markerFive"
+        android:layout_gravity="right|center_vertical"
+        android:src="@drawable/marker_large"
+        android:paddingLeft="20dp"
+        android:paddingTop="20dp"
+        android:visibility="invisible" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:id="@+id/shotFive"
         android:layout_gravity="right|center_vertical"
         android:src="@drawable/squashball_large"
         android:paddingRight="20dp"
+        android:visibility="invisible" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/markerSix"
+        android:layout_gravity="right|bottom"
+        android:src="@drawable/marker_large"
+        android:paddingLeft="20dp"
+        android:paddingTop="20dp"
         android:visibility="invisible" />
 
     <ImageView

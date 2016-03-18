@@ -10,10 +10,21 @@
         android:title="Sound Effect"
         android:summary="Type of sound effect to be played for each shot."
         android:entries="@array/soundType"
+        android:defaultValue="1"
         android:entryValues="@array/soundTypeValues" />
     <SwitchPreference
         android:key="pref_rally_counter"
         android:title="@string/rally_counter_Preference"
         android:summary="@string/rally_counter_Preference_Summary"
+        android:defaultValue="false" />
+    <SwitchPreference
+        android:key="pref_show_court"
+        android:title="@string/show_court_Preference"
+        android:summary="@string/show_court_Preference_Summary"
+        android:defaultValue="true" />
+    <SwitchPreference
+        android:key="pref_show_markers"
+        android:title="@string/show_markers_Preference"
+        android:summary="@string/show_markers_Preference_Summary"
         android:defaultValue="false" />
 </PreferenceScreen>

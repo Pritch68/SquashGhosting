@@ -15,6 +15,10 @@
     <string name="sound_Preference_Summary">Play sounds during session.</string>
     <string name="rally_counter_Preference">Display Shots Remaining in Rally</string>
     <string name="rally_counter_Preference_Summary">Show number of shots remaining in current rally.</string>
+    <string name="show_court_Preference">Display Court Background</string>
+    <string name="show_court_Preference_Summary">Show squash court image as background for session.</string>
+    <string name="show_markers_Preference">Display Position Markers</string>
+    <string name="show_markers_Preference_Summary">Show possible shot position markers.</string>
     <string name="title_activity_settings">Settings</string>
     <string name="pref_header_general">General</string>
 </resources>
